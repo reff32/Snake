@@ -31,7 +31,6 @@ public:
 
 private:
 	MessageContainer m_messages;
-	MessageContainer m_
 	int m_numVisible;
 	int m_snakeScore;
 	std::string text_arr[2];
