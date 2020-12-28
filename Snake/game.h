@@ -24,7 +24,7 @@ public:
 
 private:
 	Window m_window;
-	sf::Vector2i m_center;
+	//sf::Vector2i m_center;
 	sf::Clock m_clock;
 	float m_elapsed;
 

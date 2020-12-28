@@ -216,7 +216,7 @@ void Snake::Cut(int l_segments,int l_point)
 
 	--m_lives;
 
-	//m_textbox->Add("You ate part of yourself. Remaining lives: " + std::to_string(m_lives));
+	m_textbox->Add("You ate part of yourself. Remaining lives: " + std::to_string(m_lives));
 
 	if (!m_lives)
 	{

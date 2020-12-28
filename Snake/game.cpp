@@ -4,10 +4,8 @@ Game::Game()
 	: m_window("Snake"), m_snake(Snake(m_world.GetBlockSize(), &m_textbox)), m_world(World( &m_textbox))
 {
 	
-	m_center.x = 500;//sf::VideoMode::getDesktopMode().width / 2;
-	m_center.y = 600;// sf::VideoMode::getDesktopMode().height / 2;
-	m_textbox.Setup(m_center);
-	//m_textbox.Add("New game started!");
+	m_textbox.Setup();
+	m_textbox.Add("New game started!");
 	m_world.SetLives(m_snake.GetLives());
 }
 
