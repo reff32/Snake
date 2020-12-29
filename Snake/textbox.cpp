@@ -24,16 +24,11 @@ void Textbox::Setup()
 	m_content.setCharacterSize(14);
 	m_content.setFillColor(sf::Color::White);
 	m_content.setOutlineColor(sf::Color(120, 120, 120, 255));
-	//pop-up score
-	m_popUpScore.setFont(m_font);
-	m_popUpScore.setCharacterSize(16);
-	m_popUpScore.setFillColor(sf::Color::Red);
-	m_popUpScore.setOutlineColor(sf::Color(120, 120, 120, 255));
-	//info
-	m_popUpInfo.setFont(m_font);
-	m_popUpInfo.setCharacterSize(30);
-	m_popUpInfo.setFillColor(sf::Color::Red);
-	m_popUpInfo.setOutlineColor(sf::Color(120, 120, 120, 255));
+	//pop-up
+	m_popUpText.setFont(m_font);
+	m_popUpText.setCharacterSize(20);
+	m_popUpText.setFillColor(sf::Color::Red);
+	m_popUpText.setOutlineColor(sf::Color(120, 120, 120, 255));
 }
 
 void Textbox::Add(std::string l_message)
@@ -51,7 +46,10 @@ void Textbox::Add(std::string l_message,sf::Vector2i pos)
 	if (m_PopUp.size() < 6)
 		return;
 	else
+	{
+		delete m_PopUp[0];
 		m_PopUp.erase(m_PopUp.begin());
+	}
 }
 
 void Textbox::GetScore(int score)
@@ -74,8 +72,11 @@ void Textbox::Update(float time)
 		{
 		m_PopUp[i]->Update(time);
 		}
-		if(m_PopUp.front()->m_count>10)
+		if (m_PopUp.front()->m_count > 10)
+		{
+			delete m_PopUp[0];
 			m_PopUp.erase(m_PopUp.begin());
+		}
 	}
 	
 }
@@ -100,10 +101,10 @@ void Textbox::Render(sf::RenderWindow& l_wind)
 	{
 		for (int i=0; i< m_PopUp.size(); i++)
 		{
-			m_popUpScore.setString(m_PopUp[i]->m_text);
-			m_popUpScore.setOrigin(m_popUpScore.getGlobalBounds().width/2, m_popUpScore.getGlobalBounds().height/2);
-			m_popUpScore.setPosition(m_PopUp[i]->m_pos.x, m_PopUp[i]->m_pos.y);
-			l_wind.draw(m_popUpScore);
+			m_popUpText.setString(m_PopUp[i]->m_text);
+			m_popUpText.setOrigin(m_popUpText.getGlobalBounds().width/2, m_popUpText.getGlobalBounds().height/2);
+			m_popUpText.setPosition(m_PopUp[i]->m_pos.x, m_PopUp[i]->m_pos.y);
+			l_wind.draw(m_popUpText);
 		}
 	}
 }
@@ -121,7 +122,6 @@ PopUpInfo::PopUpInfo(std::string text)
 
 void PopUpInfo::Update(float time)
 {
-	std::cout << "fix\n";
 	m_count++;
 }
 
@@ -133,7 +133,6 @@ PopUpScore::PopUpScore(std::string text, sf::Vector2i pos):PopUpInfo(text)
 
 void PopUpScore::Update(float time)
 {
-	std::cout << "move\n";
 	PopUpInfo::Update(time);
 	m_pos.y -= 90 * time;
 }

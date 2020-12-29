@@ -54,12 +54,12 @@ public:
 	void Tick();					// update method
 	bool IsTurnPoint();
 	void Render(sf::RenderWindow& l_window);
+	void IncreaseSpeed();
 
 
 	
 
 private:
-
 	void Cut(int l_segments, int l_point);		// method for cutting the snake
 	void AddPoint(sf::Vector2i pos, Direction l_dir, Direction n_dir);
 	void DeletePoint();

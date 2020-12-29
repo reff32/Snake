@@ -231,7 +231,9 @@ void Snake::Render(sf::RenderWindow& l_window)
 		return;
 	//рисуем head
 	auto head = m_snakeBody.begin();
-	m_texture.loadFromFile("images/head_s.png");
+	m_image.loadFromFile("images/head_s.png");
+	m_image.createMaskFromColor(sf::Color(255, 242, 0));
+	m_texture.loadFromImage(m_image);
 	m_sprite.setTexture(m_texture);
 	if (m_turn_container.size() > 0)
 	{
@@ -245,7 +247,9 @@ void Snake::Render(sf::RenderWindow& l_window)
 	l_window.draw(m_sprite);
 
 	//рисуем body
-	m_texture.loadFromFile("images/body_s.png");
+	m_image.loadFromFile("images/body_s2.png");
+	m_image.createMaskFromColor(sf::Color(255, 242, 0));
+	m_texture.loadFromImage(m_image);
 	m_sprite.setTexture(m_texture);
 	for (auto itr_snake = m_snakeBody.begin() + 1; itr_snake != m_snakeBody.end()-1; ++itr_snake)
 	{
