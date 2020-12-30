@@ -247,7 +247,7 @@ void Snake::Render(sf::RenderWindow& l_window)
 	l_window.draw(m_sprite);
 
 	//рисуем body
-	m_image.loadFromFile("images/body_s2.png");
+	m_image.loadFromFile("images/body_s.png");
 	m_image.createMaskFromColor(sf::Color(255, 242, 0));
 	m_texture.loadFromImage(m_image);
 	m_sprite.setTexture(m_texture);
