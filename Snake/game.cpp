@@ -46,6 +46,7 @@ void Game::Update()
 		m_elapsed -= timestep;
 		m_world.SetLives(m_snake.GetLives());
 		m_textbox.Update(m_elapsed);
+		m_textbox.BestScore();
 
 		if (m_snake.HasLost())
 			m_snake.Reset();

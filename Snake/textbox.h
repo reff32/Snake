@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 #include<iostream>
+#include<fstream>
+#include<cstdlib>
 #include "SFML/Graphics.hpp"
 
 class  PopUpInfo
@@ -35,14 +37,18 @@ public:
 	void Clear();
 	void Update(float time);
 	void Render(sf::RenderWindow& l_wind);
+	void BestScore();
 
 private:
 	PopUpContainer m_PopUp;
-	int m_numVisible;
+	std::ofstream m_outFileScore;
+	std::ifstream m_inFileScore;
 	int m_snakeScore;
 	int m_bestScore;
 	sf::Font m_font;
 	sf::Text m_content;
 	sf::Text m_popUpText;
+	void SetBestScore(int score);
+	void GetBestScore();
 };
 
