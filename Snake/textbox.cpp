@@ -114,7 +114,7 @@ void Textbox::Render(sf::RenderWindow& l_wind)
 
 void Textbox::BestScore()
 {
-	if (m_bestScore > m_snakeScore)
+	if (m_bestScore < m_snakeScore)
 	{
 		SetBestScore(m_snakeScore);
 	}
@@ -125,6 +125,7 @@ void Textbox::SetBestScore(int score)
 {
 	m_outFileScore.open("score.txt");
 	m_outFileScore << score;
+	//Add("New best score!");
 	m_outFileScore.close();
 }
 
